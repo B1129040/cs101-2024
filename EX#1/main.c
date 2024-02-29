@@ -1,14 +1,17 @@
 #include <stdio.h> 
-int main()
-{
-  int n=6, i=0, j=0; 
-  char c=' ';
-  for(i=1; i<=n; i++){ 
-    printf("%*c", n-i+1, ' ');
-    for(j=1; j<=i ;j++){
-      printf("%d ", i);
+
+int main() {
+  int n=6;
+  int spc = n;
+  
+  for(int i=1; i<=n; i++){ 
+    for(int k=spc;k>=1;k--) {
+      printf(" ");
+    }
+    for(int j=1;j<=i;j++){
+        printf("%d ",i);
     }
     printf("\n"); 
-  } 
-  return 0;
+    spc--;
+  }
 }
