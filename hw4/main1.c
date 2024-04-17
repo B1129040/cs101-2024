@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 typedef struct {
     int *g_mm_ptr[10];
 } my_mm_t;
@@ -20,7 +21,7 @@ void print_calloc_array(int flag) {
         printf(" <- Out of space\n");
 }
 
-int *my_calloc(int n, int size) {
+int *my_calloc(int size) {
     int count = 0, head = 0;
     for (int i = 0; i < 10; i++) {
         if (mms.g_mm_ptr[i] == NULL) {
@@ -42,7 +43,7 @@ int *my_calloc(int n, int size) {
     int *tmp = (int*)calloc(size, sizeof(int));
     for (int i = head; i < head + size; i++) {
             mms.g_mm_ptr[i] = tmp;
-            g_mm[i] = n;
+            g_mm[i] = 1;
         }
     print_calloc_array(1);
     return tmp;
@@ -59,15 +60,14 @@ void my_free(int *p) {
     print_calloc_array(1);
 }
 
-int main()
-{
-    int *np1 = my_calloc(1, 1);
-    int *np2 = my_calloc(1, 2);
-    int *np3 = my_calloc(1, 3);
-    int *np4 = my_calloc(1, 4);
+int main() {
+    int *np1 = my_calloc(1);
+    int *np2 = my_calloc(2);
+    int *np3 = my_calloc(3);
+    int *np4 = my_calloc(4);
     my_free(np1);
     my_free(np4);
-    int *np5 = my_calloc(1, 5);
-    int *np6 = my_calloc(1, 1);
+    int *np5 = my_calloc(5);
+    int *np6 = my_calloc(1);
     return 0;
 }
